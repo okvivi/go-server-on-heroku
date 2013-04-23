@@ -1,12 +1,15 @@
 #### Example Go server on heroku
 
-`$ heroku create <example_app_name>
+<pre>
+$ heroku create <example_app_name>
 $ heroku config:add BUILDPACK_URL=https://github.com/kr/heroku-buildpack-go 
 $ git push heroku master
-`
+</pre>
 
 The error I get from this is
-`$ git push heroku master                                                                                                                                        [15:31:00]
+
+<pre>
+$ git push heroku master
 Counting objects: 14, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (8/8), done.
@@ -25,5 +28,5 @@ package okvivi/models: unrecognized import path "okvivi/models"
 
 To git@heroku.com:gofe-example.git
  ! [remote rejected] master -> master (pre-receive hook declined)
-error: failed to push some refs to 'git@heroku.com:gofe-example.git'`
-
+error: failed to push some refs to 'git@heroku.com:gofe-example.git'
+</pre>
