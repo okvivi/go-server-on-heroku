@@ -1,1 +1,1 @@
-web:  bin/gofe
+web:  gofe -p $PORT
