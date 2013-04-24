@@ -1,32 +1,17 @@
-#### Example Go server on heroku
+#### Example of a less trivial Go server on heroku
 
 <pre>
 $ heroku create <example_app_name>
 $ heroku config:add BUILDPACK_URL=https://github.com/kr/heroku-buildpack-go 
-$ git push heroku master
+$ git subtree push --prefix src heroku master
 </pre>
 
-The error I get from this is
+#### A few non trivial observations
 
-<pre>
-$ git push heroku master
-Counting objects: 14, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (8/8), done.
-Writing objects: 100% (14/14), 1.25 KiB, done.
-Total 14 (delta 0), reused 3 (delta 0)
+The .godir directory is meant to point not only to where you want the app to run, but also
+to where you want it to compile. Think of it as the root of your 'src/' tree. All the code
+under .godir will be copied under $GOPATH/src.
 
------> Fetching custom git buildpack... done
------> Go app detected
------> Installing Go 1.0.3... done
-       Installing Virtualenv... done
-       Installing Mercurial... done
-       Installing Bazaar... done
------> Running: go get -tags heroku ./...
-package okvivi/models: unrecognized import path "okvivi/models"
- !     Heroku push rejected, failed to compile Go app
-
-To git@heroku.com:gofe-example.git
- ! [remote rejected] master -> master (pre-receive hook declined)
-error: failed to push some refs to 'git@heroku.com:gofe-example.git'
-</pre>
+I'm using `git subtree` to push code to heroku because this is also a scenario with a more
+complicated repository, not the standard 'one repo per binary' but instead something where
+you can keep more than just your go files.
