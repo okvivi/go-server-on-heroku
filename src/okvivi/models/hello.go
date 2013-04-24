@@ -1,3 +1,3 @@
 package models
 
-HelloWorld := "hello world"
+var HelloWorld = "hello world"
