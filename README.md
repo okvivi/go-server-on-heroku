@@ -3,15 +3,16 @@
 <pre>
 $ heroku create <example_app_name>
 $ heroku config:add BUILDPACK_URL=https://github.com/kr/heroku-buildpack-go 
-$ git subtree push --prefix src heroku master
+$ git push heroku master
 </pre>
 
-#### A few non trivial observations
+#### This example does not currently compile on heroku
 
-The .godir directory is meant to point not only to where you want the app to run, but also
-to where you want it to compile. Think of it as the root of your 'src/' tree. All the code
-under .godir will be copied under $GOPATH/src.
+The directory structure has two binaries, and a `foobar.com/shared` shared package that both try to import.
 
-I'm using `git subtree` to push code to heroku because this is also a scenario with a more
-complicated repository, not the standard 'one repo per binary' but instead something where
-you can keep more than just your go files.
+    foobar.com/frontend/  <-- there's a binary in here, the web one
+    foobar.com/shared/    <-- NO BINARY in here, just a package with shared code
+    foobar.com/worker/    <-- there's a second binary in here
+
+This directory structure no longer compiles, because the moment I specify a ".godir" that's anything other than the root of my directory structure, the go compiler can no longer find the code under foobar.com/shared anymore.
+
