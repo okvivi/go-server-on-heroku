@@ -1,2 +1,2 @@
-web:     gofe -p $PORT
+web:     frontend -p $PORT
 worker:  worker
