@@ -1,3 +1,3 @@
-package models
+package shared
 
 var HelloWorld = "hello world"
