@@ -1,3 +1,8 @@
+#### What's the context of this?
+
+If you stumbled upon this repository, it's in reference to this thread about how to push a go binary to heroku https://groups.google.com/forum/#!topic/golang-nuts/6tyCz7Tc8Ow/discussion
+I hope it helps you on your journey!
+
 #### Example of a less Go server on heroku with a proper Go workspace
 
 <pre>
@@ -18,3 +23,4 @@ The directory structure has two binaries, and a `foobar.com/shared` shared packa
 
 Symlinks are used to expose the frontend, shared, and worker packages to the
 heroku buildpack.
+
